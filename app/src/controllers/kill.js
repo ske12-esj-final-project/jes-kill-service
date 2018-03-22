@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
             return res.status(500).json("Cannot create killfeed")
         }
         
-        console.log("Killfeed created")
+        return res.status(200).json("Killfeed created")
     })
 })
 
