@@ -450,9 +450,9 @@ sprintf-js@~1.0.2:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
 
-swagger-ui-express@^2.0.15:
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-2.0.15.tgz#fba85a357b40c0d629e942537199987b8085587d"
+swagger-ui-express@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-3.0.1.tgz#eca4282ba3448adb74d16e5aaea342a186f0a91f"
 
 type-is@~1.6.15, type-is@~1.6.16:
   version "1.6.16"
