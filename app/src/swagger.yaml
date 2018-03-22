@@ -1,0 +1,53 @@
+swagger: "3.0.1"
+info:
+  version: 1.0.0
+  title: Just Enjoy Shooting (Kill Service)
+schemes:
+  - http
+้host: http://localhost:8081/v1/
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  Kill:
+    type: object
+    properties:
+      matchID:
+        type: string
+        description: id of match that kill occured
+      playerID:
+        type: string
+        description: id of a player who performed killing
+      victimID:
+        type: string
+        description: id of a player whom got killed
+      victimPos:
+        type: object
+        description: victim's position as { x,y,z }
+      weaponUsed:
+        type: string
+        description: name of weapon that killer used
+paths:
+  /kills:
+    get:
+      responses:
+        200:
+          description: Returns all kills
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Kill'
+
+        500:
+          description: Cannot return kills
+    
+    post:
+      responses:
+        200:
+          description: Kill created
+        500:
+          description: Cannot kill
+          
+
+
