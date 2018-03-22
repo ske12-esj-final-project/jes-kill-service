@@ -1,0 +1,23 @@
+
+version: '3'
+services:
+  jes-kill-service:
+    container_name: jes-kill-service
+    build: ./app
+    env_file:
+      - ./.env
+    restart: unless-stopped
+    ports:
+      - $PORT:$PORT
+    links:
+      - jes-kill-mongo
+    environment:
+      PORT: $PORT
+      MONGO_URL: mongodb://jes-kill-mongo:27017/jes-kill-db
+
+  jes-kill-mongo:
+    container_name: jes-kill-mongo
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - $MONGO_PORT:27017
