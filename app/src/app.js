@@ -19,12 +19,12 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    res.send("Match service is running...")
+    res.send("Kill service is running...")
 })
 
 let server = app.listen(port, () => {
     let port = server.address().port
-    console.log(`jes-match-service version : ${VERSION}`)
+    console.log(`jes-kill-service version : ${VERSION}`)
     console.log('running at http://' + 'localhost' + ':' + port)
 })
 
