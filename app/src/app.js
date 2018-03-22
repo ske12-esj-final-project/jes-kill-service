@@ -6,6 +6,13 @@ const routes = require('./routes')
 
 const app = express()
 
+const swaggerUI = require('swagger-ui-express')
+const YAML = require('yamljs')
+const path = require('path')
+const swaggerDocument = YAML.load(path.join(__dirname, '/swagger.yaml'))
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const KillSchema = new mongoose.Schema({
+    matchID: String,
     playerID: String,
     victimID: String,
     victimPos: Object,
