@@ -1,7 +1,7 @@
 swagger: "3.0.1"
 info:
   version: 1.0.0
-  title: Just Enjoy Shooting (Kill Service)
+  title: Just Enjoy Shooting (Kill)
 schemes:
   - http
 ้host: http://localhost:8081/v1/
@@ -25,6 +25,13 @@ definitions:
       victimPos:
         type: object
         description: victim's position as { x,y,z }
+        properties:
+          x:
+            type: number
+          y:
+            type: number
+          z:
+            type: number
       weaponUsed:
         type: string
         description: name of weapon that killer used
