@@ -5,7 +5,9 @@ const Match = require('../models/match')
 const Kill = require('../models/kill')
 
 router.post('/', (req, res) => {
-    Match.create({}, (err, match) => {
+    Match.create({
+        players: req.body.players
+    }, (err, match) => {
         if (err) {
             console.error(err)
             return res.status(500).json("Cannot create match")

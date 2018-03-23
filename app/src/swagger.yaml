@@ -4,7 +4,7 @@ info:
   title: Just Enjoy Shooting (Kill)
 schemes:
   - http
-host: http://localhost:8081/v1/
+host: localhost:8081/v1/
 consumes:
   - application/json
 produces:
