@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const KillSchema = new mongoose.Schema({
-    matchID: String,
+    matchID: { type: mongoose.Schema.Types.ObjectId, ref: 'Match' },
     playerID: String,
     victimID: String,
     victimPos: Object,

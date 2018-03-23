@@ -4,8 +4,6 @@ const router = Router()
 const Kill = require('../models/kill')
 
 router.post('/', (req, res) => {
-    console.log('POST /kill')
-
     Kill.create({
         matchID: req.body.matchID,
         playerID: req.body.playerID,
