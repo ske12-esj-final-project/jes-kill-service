@@ -8,9 +8,9 @@ router.post('/', (req, res) => {
         matchID: req.body.matchID,
         playerID: req.body.playerID,
         victimID: req.body.victimID,
-        victimPos: JSON.parse(req.body.victimPos),
+        victimPos: req.body.victimPos,
         weaponUsed: req.body.weaponUsed
-
+        
     }, (err, kill) => {
         if(err) {
             console.error(err)
@@ -27,16 +27,12 @@ router.get('/', (req, res) => {
             console.error(err)
             return res.status(500).json("Cannot find killfeeds")
         }
-
-        let results = kills.map(kill => ({
-            id: kill.id,
-            matchID: kill.matchID,
-            playerID: kill.playerID,
-            victimID: kill.victimID,
-            victimPos: JSON.stringify(kill.victimPos),
-            weaponUsed: kill.weaponUsed,
-        }))
-
+        
+        let results = {}
+        kills.forEach((kill) => {
+            results[kill._id] = kill
+        })
+        
         res.status(200).send(results)
     })
 })
