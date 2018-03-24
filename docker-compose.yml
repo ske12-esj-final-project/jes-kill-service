@@ -1,8 +1,8 @@
 
 version: '3'
 services:
-  jes-kill-service:
-    container_name: jes-kill-service
+  jes-match-service:
+    container_name: jes-match-service
     build: ./app
     env_file:
       - ./.env
@@ -10,13 +10,13 @@ services:
     ports:
       - $PORT:$PORT
     links:
-      - jes-kill-mongo
+      - jes-match-mongo
     environment:
       PORT: $PORT
-      MONGO_URL: mongodb://jes-kill-mongo:27017/jes-kill-db
+      MONGO_URL: $MONGO_URL
 
-  jes-kill-mongo:
-    container_name: jes-kill-mongo
+  jes-match-mongo:
+    container_name: jes-match-mongo
     image: mongo
     restart: unless-stopped
     ports:
