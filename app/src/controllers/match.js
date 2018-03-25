@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
             return res.status(500).json("Cannot create match")
         }
         
-        return res.status(200).json("Match created")
+        return res.status(200).send({ matchID: match._id })
     })
 })
 
