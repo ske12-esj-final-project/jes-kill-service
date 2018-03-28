@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
 const KillSchema = new mongoose.Schema({
-    matchID: { type: mongoose.Schema.Types.ObjectId, ref: 'Match' },
+    matchID: { type: String, required: true },
     playerID: { type: String, required: true },
     victimID: { type: String, required: true },
-    victimPos: { type: String, required: true },
+    victimPos: { type: Object, required: true },
     weaponUsed: { type: String, required: true },
 })
 
