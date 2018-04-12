@@ -1,11 +1,8 @@
-
 version: '3'
 services:
   jes-match-service:
     container_name: jes-match-service
     build: ./app
-    env_file:
-      - ./.env
     restart: unless-stopped
     ports:
       - $PORT:$PORT

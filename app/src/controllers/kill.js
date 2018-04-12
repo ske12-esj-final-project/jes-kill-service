@@ -27,13 +27,7 @@ router.get('/', (req, res) => {
             console.error(err)
             return res.status(500).json("Cannot find killfeeds")
         }
-        
-        let results = {}
-        kills.forEach((kill) => {
-            results[kill._id] = kill
-        })
-        
-        res.status(200).send(results)
+        res.status(200).send(kills)
     })
 })
 
