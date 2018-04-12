@@ -29,7 +29,7 @@ app.use(bodyParser.json())
 app.use(`/v${VERSION}`, routes)
 
 app.get('/', (req, res) => {
-    res.send("Kill service is running...")
+    res.send("Kill service is running... VERSION",VERSION)
 })
 
 let server = app.listen(port, () => {
