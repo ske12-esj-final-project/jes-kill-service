@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 const db = require('./db')
 const port = process.env.PORT || 8081
-const VERSION = process.env.VERSION || '1'
+const VERSION = process.env.VERSION || '1.1'
 
 app.use(cors())
 app.use(bodyParser.json())

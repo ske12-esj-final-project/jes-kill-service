@@ -24,12 +24,7 @@ router.get('/', (req, res) => {
             return res.status(500).json("Cannot find matches")
         }
         
-        let results = {}
-        matches.forEach((match) => {
-            results[match._id] = match
-        })
-        
-        res.status(200).send(results)
+        res.status(200).send(matches)
     })
 })
 
@@ -41,12 +36,7 @@ router.get('/:match_id', (req, res) => {
             return res.status(500).json(`Cannot find match ${matchID}`)
         }
         
-        let results = {}
-        matches.forEach((match) => {
-            results[match._id] = match
-        })
-        
-        res.status(200).send(results)
+        res.status(200).send(match)
     })
 })
 
@@ -63,13 +53,7 @@ router.get('/:match_id/kills', (req, res) => {
                 console.error(err)
                 return res.status(500).json(`Cannot find kills in ${matchID}`)
             }
-            
-            let results = {}
-            kills.forEach((kill) => {
-                results[kill._id] = kill
-            })
-            
-            res.status(200).send(results)
+            res.status(200).send(kills)
             
         })
     })
