@@ -22,19 +22,20 @@ app.use((req, res, next) => {
 
 const db = require('./db')
 const port = process.env.PORT || 8081
-const VERSION = process.env.VERSION || '1.1'
+const APP_VERSION = '1.1'
+const VERSION = process.env.VERSION || '1'
 
 app.use(cors())
 app.use(bodyParser.json())
 app.use(`/v${VERSION}`, routes)
 
 app.get('/', (req, res) => {
-    res.send(`Kill service is running... VERSION ${VERSION}`)
+    res.send(`Kill service is running... VERSION ${APP_VERSION}`)
 })
 
 let server = app.listen(port, () => {
     let port = server.address().port
-    console.log(`jes-kill-service version : ${VERSION}`)
+    console.log(`jes-kill-service version : ${APP_VERSION}`)
     console.log('running at http://' + 'localhost' + ':' + port)
 })
 
