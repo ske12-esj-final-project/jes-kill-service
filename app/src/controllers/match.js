@@ -44,6 +44,7 @@ router.put('/:match_id', (req, res) => {
     let matchID = req.params.match_id
     Match.findByIdAndUpdate(matchID, {
         duration: req.body.duration || 0,
+        winner: req.body.winner || null
     }, { new: true })
         .then(match => {
             if (!match) {

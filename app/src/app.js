@@ -30,12 +30,12 @@ app.use(bodyParser.json())
 app.use(`/v${VERSION}`, routes)
 
 app.get('/', (req, res) => {
-    res.send(`Kill service is running... VERSION ${APP_VERSION}`)
+    res.send(`Match service is running... VERSION ${APP_VERSION}`)
 })
 
 let server = app.listen(port, () => {
     let port = server.address().port
-    console.log(`jes-kill-service version : ${APP_VERSION}`)
+    console.log(`jes-match-service version : ${APP_VERSION}`)
     console.log('running at http://' + 'localhost' + ':' + port)
 })
 
