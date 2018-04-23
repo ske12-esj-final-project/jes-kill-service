@@ -1,10 +1,18 @@
 swagger: "3.0.1"
 info:
+  description: JES match-service API documentation
   version: 1.0.0
-  title: Just Enjoy Shooting (Kill)
+  title: Just Enjoy Shooting (Match)
 schemes:
   - http
-host: localhost:8081/v1/
+host: jes.api.match.safesuk.me
+basePath: /v1
+tags:
+  - name: kill
+    description: Operations about kill
+tags:
+  - name: match
+    description: Operations about match
 consumes:
   - application/json
 produces:
@@ -35,12 +43,36 @@ definitions:
       weaponUsed:
         type: string
         description: name of weapon that killer used
+  Match:
+    type: object
+    properties:
+      id:
+        type: string
+        description: id of match
+        format: objectId
+      dateCreated:
+        type: string
+        description: date/time match started
+      players:
+        type: array
+        items:
+          type: string
+          description: User id
+      duration:
+        type: number
+        description: duration of a match
+      winner:
+        type: string
+        description: user id of the last man standing
 paths:
   /kills:
     get:
+      tags:
+        - kill
       responses:
         200:
           description: Returns all kills
+          operationId: getKills
           schema:
             type: array
             items:
@@ -50,11 +82,135 @@ paths:
           description: Cannot return kills
     
     post:
+      tags:
+        - kill
+      summary: add kill to the system
+      description: ''
+      operationId: postKill
+      parameters:
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Kill"
       responses:
         200:
           description: Kill created
         500:
-          description: Cannot kill
-          
+          description: Cannot create kill
+  /matches:
+    get:
+      tags:
+        - match
+      responses:
+        200:
+          description: Returns all matches
+          operationId: getMatches
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Match'
 
+        500:
+          description: Cannot return matches
+    
+    post:
+      tags:
+        - match
+      summary: add match to the system
+      description: ''
+      operationId: getMatches
+      parameters:
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Kill"
+      responses:
+        200:
+          description: Match created
+        500:
+          description: Cannot create match
+  /matches/{id}:
+    get:
+      tags:
+        - match
+      summary: get match by id
+      description: ''
+      operationId: getMatch
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: 'match id'
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Match'
+        '500':
+          description: Cannot get match by id
+        '404':
+          description: Match not found
+
+    put:
+      tags:
+        - match
+      summary: Update duration and winner of a match
+      description: ''
+      operationId: putMatch
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: 'match id'
+          required: true
+          type: string
+
+        - name: duration
+          in: body
+          description: 'duration of a match'
+          required: true
+          type: number
+
+        - name: winner
+          in: body
+          description: 'winner of a match'
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Match'
+        '500':
+          description: Error can't update match by id
+        '404':
+          description: Match not found
+  /matches/{id}/kills:
+    get:
+      tags:
+        - match
+      summary: get kills occurred in a match
+      description: ''
+      operationId: getMatchKills
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: 'match id'
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Kill'
+        '500':
+          description: Cannot get match by id
+        '404':
+          description: Match not found
 
