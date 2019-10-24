@@ -9,7 +9,7 @@
     "express": "^4.16.3",
     "mongodb": "^3.0.4",
     "mongoose": "^5.4.10",
-    "swagger-ui-express": "^3.0.1",
+    "swagger-ui-express": "^4.1.2",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {},
